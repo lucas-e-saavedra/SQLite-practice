@@ -16,6 +16,8 @@
 
 package com.example.android.testing.notes.data;
 
+import android.content.Context;
+
 import java.util.List;
 
 /**
@@ -29,9 +31,9 @@ public interface NotesServiceApi {
         void onLoaded(T notes);
     }
 
-    void getAllNotes(NotesServiceCallback<List<Note>> callback);
+    void getAllNotes(Context ctx, NotesServiceCallback<List<Note>> callback);
 
-    void getNote(String noteId, NotesServiceCallback<Note> callback);
+    void getNote(Context ctx, String noteId, NotesServiceCallback<Note> callback);
 
-    void saveNote(Note note);
+    void saveNote(Context ctx, Note note);
 }

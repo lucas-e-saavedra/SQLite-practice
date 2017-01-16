@@ -85,7 +85,7 @@ public class AddNoteFragment extends Fragment implements AddNoteContract.View {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mActionListener.saveNote(mTitle.getText().toString(),
+                mActionListener.saveNote(getContext(), mTitle.getText().toString(),
                         mDescription.getText().toString());
             }
         });

@@ -16,6 +16,7 @@
 
 package com.example.android.testing.notes.notes;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.example.android.testing.notes.data.Note;
@@ -40,7 +41,7 @@ public interface NotesContract {
 
     interface UserActionsListener {
 
-        void loadNotes(boolean forceUpdate);
+        void loadNotes(Context ctx, boolean forceUpdate);
 
         void addNewNote();
 

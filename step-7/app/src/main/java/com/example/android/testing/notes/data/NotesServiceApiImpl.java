@@ -16,6 +16,7 @@
 
 package com.example.android.testing.notes.data;
 
+import android.content.Context;
 import android.os.Handler;
 import android.support.v4.util.ArrayMap;
 
@@ -32,7 +33,7 @@ public class NotesServiceApiImpl implements NotesServiceApi {
             NotesServiceApiEndpoint.loadPersistedNotes();
 
     @Override
-    public void getAllNotes(final NotesServiceCallback callback) {
+    public void getAllNotes(Context ctx, final NotesServiceCallback callback) {
         // Simulate network by delaying the execution.
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -45,14 +46,14 @@ public class NotesServiceApiImpl implements NotesServiceApi {
     }
 
     @Override
-    public void getNote(final String noteId, final NotesServiceCallback callback) {
+    public void getNote(Context ctx, final String noteId, final NotesServiceCallback callback) {
         //TODO: Add network latency here too.
         Note note = NOTES_SERVICE_DATA.get(noteId);
         callback.onLoaded(note);
     }
 
     @Override
-    public void saveNote(Note note) {
+    public void saveNote(Context ctx, Note note) {
         NOTES_SERVICE_DATA.put(note.getId(), note);
     }
 

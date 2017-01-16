@@ -19,6 +19,7 @@ package com.example.android.testing.notes.notedetail;
 import com.example.android.testing.notes.data.Note;
 import com.example.android.testing.notes.data.NotesRepository;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
@@ -41,14 +42,14 @@ public class NoteDetailPresenter implements NoteDetailContract.UserActionsListen
     }
 
     @Override
-    public void openNote(@Nullable String noteId) {
+    public void openNote(Context ctx, @Nullable String noteId) {
         if (null == noteId || noteId.isEmpty()) {
             mNotesDetailView.showMissingNote();
             return;
         }
 
         mNotesDetailView.setProgressIndicator(true);
-        mNotesRepository.getNote(noteId, new NotesRepository.GetNoteCallback() {
+        mNotesRepository.getNote(ctx, noteId, new NotesRepository.GetNoteCallback() {
             @Override
             public void onNoteLoaded(Note note) {
                 mNotesDetailView.setProgressIndicator(false);

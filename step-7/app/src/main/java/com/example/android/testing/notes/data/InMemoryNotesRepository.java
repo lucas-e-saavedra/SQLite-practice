@@ -18,6 +18,7 @@ package com.example.android.testing.notes.data;
 
 import com.google.common.collect.ImmutableList;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
 
@@ -44,11 +45,11 @@ public class InMemoryNotesRepository implements NotesRepository {
     }
 
     @Override
-    public void getNotes(@NonNull final LoadNotesCallback callback) {
+    public void getNotes(Context ctx, @NonNull final LoadNotesCallback callback) {
         checkNotNull(callback);
         // Load from API only if needed.
         if (mCachedNotes == null) {
-            mNotesServiceApi.getAllNotes(new NotesServiceApi.NotesServiceCallback<List<Note>>() {
+            mNotesServiceApi.getAllNotes(ctx, new NotesServiceApi.NotesServiceCallback<List<Note>>() {
                 @Override
                 public void onLoaded(List<Note> notes) {
                     mCachedNotes = ImmutableList.copyOf(notes);
@@ -61,18 +62,18 @@ public class InMemoryNotesRepository implements NotesRepository {
     }
 
     @Override
-    public void saveNote(@NonNull Note note) {
+    public void saveNote(Context ctx, @NonNull Note note) {
         checkNotNull(note);
-        mNotesServiceApi.saveNote(note);
+        mNotesServiceApi.saveNote(ctx, note);
         refreshData();
     }
 
     @Override
-    public void getNote(@NonNull final String noteId, @NonNull final GetNoteCallback callback) {
+    public void getNote(Context ctx, @NonNull final String noteId, @NonNull final GetNoteCallback callback) {
         checkNotNull(noteId);
         checkNotNull(callback);
         // Load notes matching the id always directly from the API.
-        mNotesServiceApi.getNote(noteId, new NotesServiceApi.NotesServiceCallback<Note>() {
+        mNotesServiceApi.getNote(ctx, noteId, new NotesServiceApi.NotesServiceCallback<Note>() {
             @Override
             public void onLoaded(Note note) {
                 callback.onNoteLoaded(note);

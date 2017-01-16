@@ -16,6 +16,7 @@
 
 package com.example.android.testing.notes.notedetail;
 
+import android.content.Context;
 import android.support.annotation.Nullable;
 
 /**
@@ -44,6 +45,6 @@ public interface NoteDetailContract {
 
     interface UserActionsListener {
 
-        void openNote(@Nullable String noteId);
+        void openNote(Context ctx, @Nullable String noteId);
     }
 }

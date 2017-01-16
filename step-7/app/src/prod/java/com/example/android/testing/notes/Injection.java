@@ -19,6 +19,7 @@ package com.example.android.testing.notes;
 import com.example.android.testing.notes.data.NoteRepositories;
 import com.example.android.testing.notes.data.NotesRepository;
 import com.example.android.testing.notes.data.NotesServiceApiImpl;
+import com.example.android.testing.notes.data.database.NotesServiceApiImplSQLite;
 import com.example.android.testing.notes.util.ImageFile;
 import com.example.android.testing.notes.util.ImageFileImpl;
 
@@ -33,6 +34,7 @@ public class Injection {
     }
 
     public static NotesRepository provideNotesRepository() {
-        return NoteRepositories.getInMemoryRepoInstance(new NotesServiceApiImpl());
+        //return NoteRepositories.getInMemoryRepoInstance(new NotesServiceApiImpl());
+        return NoteRepositories.getInMemoryRepoInstance(new NotesServiceApiImplSQLite());
     }
 }

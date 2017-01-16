@@ -20,6 +20,7 @@ import com.example.android.testing.notes.data.Note;
 import com.example.android.testing.notes.data.NotesRepository;
 import com.example.android.testing.notes.util.EspressoIdlingResource;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public class NotesPresenter implements NotesContract.UserActionsListener {
     }
 
     @Override
-    public void loadNotes(boolean forceUpdate) {
+    public void loadNotes(Context ctx, boolean forceUpdate) {
         mNotesView.setProgressIndicator(true);
         if (forceUpdate) {
             mNotesRepository.refreshData();
@@ -53,7 +54,7 @@ public class NotesPresenter implements NotesContract.UserActionsListener {
         // that the app is busy until the response is handled.
         EspressoIdlingResource.increment(); // App is busy until further notice
 
-        mNotesRepository.getNotes(new NotesRepository.LoadNotesCallback() {
+        mNotesRepository.getNotes(ctx, new NotesRepository.LoadNotesCallback() {
             @Override
             public void onNotesLoaded(List<Note> notes) {
                 EspressoIdlingResource.decrement(); // Set app as idle.

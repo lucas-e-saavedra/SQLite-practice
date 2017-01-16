@@ -16,6 +16,7 @@
 
 package com.example.android.testing.notes.addnote;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 
 import java.io.IOException;
@@ -40,7 +41,7 @@ public interface AddNoteContract {
 
     interface UserActionsListener {
 
-        void saveNote(String title, String description);
+        void saveNote(Context ctx, String title, String description);
 
         void takePicture() throws IOException;
 

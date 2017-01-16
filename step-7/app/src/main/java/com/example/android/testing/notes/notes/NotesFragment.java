@@ -73,7 +73,7 @@ public class NotesFragment extends Fragment implements NotesContract.View {
     @Override
     public void onResume() {
         super.onResume();
-        mActionsListener.loadNotes(false);
+        mActionsListener.loadNotes(getContext(), false);
     }
 
     @Override
@@ -127,7 +127,7 @@ public class NotesFragment extends Fragment implements NotesContract.View {
        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mActionsListener.loadNotes(true);
+                mActionsListener.loadNotes(getContext(), true);
             }
         });
         return root;

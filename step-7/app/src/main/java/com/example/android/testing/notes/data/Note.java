@@ -40,7 +40,11 @@ public final class Note {
     }
 
     public Note(@Nullable String title, @Nullable String description, @Nullable String imageUrl) {
-        mId = UUID.randomUUID().toString();
+        this(UUID.randomUUID().toString(), title, description, imageUrl);
+    }
+
+    public Note(String id, @Nullable String title, @Nullable String description, @Nullable String imageUrl) {
+        mId = id;
         mTitle = title;
         mDescription = description;
         mImageUrl = imageUrl;

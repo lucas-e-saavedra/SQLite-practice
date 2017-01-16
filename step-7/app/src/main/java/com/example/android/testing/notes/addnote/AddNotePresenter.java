@@ -20,6 +20,7 @@ import com.example.android.testing.notes.data.Note;
 import com.example.android.testing.notes.data.NotesRepository;
 import com.example.android.testing.notes.util.ImageFile;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 
 import java.io.IOException;
@@ -50,7 +51,7 @@ public class AddNotePresenter implements AddNoteContract.UserActionsListener {
     }
 
     @Override
-    public void saveNote(String title, String description) {
+    public void saveNote(Context ctx, String title, String description) {
         String imageUrl = null;
         if (mImageFile.exists()) {
             imageUrl = mImageFile.getPath();
@@ -59,7 +60,7 @@ public class AddNotePresenter implements AddNoteContract.UserActionsListener {
         if (newNote.isEmpty()) {
             mAddNoteView.showEmptyNoteError();
         } else {
-            mNotesRepository.saveNote(newNote);
+            mNotesRepository.saveNote(ctx, newNote);
             mAddNoteView.showNotesList();
         }
     }

@@ -79,7 +79,7 @@ public class NoteDetailFragment extends Fragment implements NoteDetailContract.V
     public void onResume() {
         super.onResume();
         String noteId = getArguments().getString(ARGUMENT_NOTE_ID);
-        mActionsListener.openNote(noteId);
+        mActionsListener.openNote(getContext(), noteId);
     }
 
     @Override
