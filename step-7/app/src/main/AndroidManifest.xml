@@ -27,6 +27,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <provider
+            android:name=".data.database.NotesContentProvider"
+            android:authorities="com.example.android.testing.notes.NotesProvider"
+            android:exported="true"/>
         <activity
                 android:name=".notes.NotesActivity"
                 android:theme="@style/AppTheme.OverlapSystemBar">
