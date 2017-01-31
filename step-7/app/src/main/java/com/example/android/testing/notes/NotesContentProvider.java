@@ -1,4 +1,4 @@
-package com.example.android.testing.notes.data.database;
+package com.example.android.testing.notes;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -10,6 +10,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+
+import com.example.android.testing.notes.data.database.NoteContract;
+import com.example.android.testing.notes.data.database.NoteDBHelper;
 
 /**
  * Created by Lucas.Saavedra on 23/1/2017.

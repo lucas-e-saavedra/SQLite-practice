@@ -28,7 +28,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <provider
-            android:name=".data.database.NotesContentProvider"
+            android:name=".NotesContentProvider"
             android:authorities="com.example.android.testing.notes.NotesProvider"
             android:exported="true"/>
         <activity
