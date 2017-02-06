@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2015 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,14 +12,13 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  -->
-
-<manifest
-    package="com.example.android.testing.notes"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.android.testing.notes">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -30,18 +28,30 @@
         <provider
             android:name=".NotesContentProvider"
             android:authorities="com.example.android.testing.notes.NotesProvider"
-            android:exported="true"/>
+            android:exported="true" />
+
         <activity
-                android:name=".notes.NotesActivity"
-                android:theme="@style/AppTheme.OverlapSystemBar">
+            android:name=".notes.NotesActivity"
+            android:theme="@style/AppTheme.OverlapSystemBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".notedetail.NoteDetailActivity" />
         <activity android:name=".addnote.AddNoteActivity" />
         <activity android:name=".statistics.StatisticsActivity" />
+
+        <receiver android:name=".NewAppWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/new_app_widget_info" />
+        </receiver>
     </application>
 
 </manifest>
